@@ -42,8 +42,9 @@ class TestBoggle(unittest.TestCase):
         grid = boggle.make_grid(2,2)
         neighbours = boggle.all_grid_neighbours(grid)
         self.assertEqual(len(neighbours), len(grid))
-        for pos in grid:
-            others = list(grid)
-            others.remove(pos)
-            self.assertListEqual(sorted(neighbours[pos]), sorted(others))
+
+        self.assertEqual([(0,1), (1,0), (1,1)], sorted(neighbours[0,0]))
+        self.assertEqual([(0,0), (1,0), (1,1)], sorted(neighbours[0,1]))
+        self.assertEqual([(0,0), (0,1), (1,1)], sorted(neighbours[1,0]))
+        self.assertEqual([(0,0), (0,1), (1,0)], sorted(neighbours[1,1]))
 
